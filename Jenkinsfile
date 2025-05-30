@@ -39,15 +39,15 @@ pipeline {
         stage('E3E Test') {
             agent{
                 docker {
-                    image 'mcr.microsoft.com/playwright:v1.52.0-noble'
+                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
                     reuseNode true
                 }
             }
             steps {
                 sh '''
-                    npm install serve
+                    npm install serve 
                     serve -s build &
-                    sleep 10
+                    #sleep 10
                     npx playwright test
                 '''
             }
